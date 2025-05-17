@@ -730,7 +730,7 @@
                 if (now < targetDate) {
                     e.preventDefault(); // Mencegah aksi default (misal buka modal/link)
                     e.stopPropagation();
-                    // window.location.hash = '#confetti';  // jika ada elemen dengan id="awal"
+                    window.location.hash = '#landing';  // jika ada elemen dengan id="awal"
                     alert("Sabar yaa... Kejutannya baru bisa dibuka tanggal 18 Mei 🥰");
                     window.location.reload();
                     return false;
