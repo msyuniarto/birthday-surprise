@@ -1,0 +1,61 @@
+body {
+  font-family: 'Great Vibes', cursive;
+  background: linear-gradient(to right, #ffe0e9, #fff4f4);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #d63384;
+}
+
+.container {
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+.message {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.gallery img {
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  background-color: #ff66b2;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+button:hover {
+  background-color: #ff3385;
+}
+
+.quiz {
+  margin-top: 1rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  font-size: 1.2rem;
+}

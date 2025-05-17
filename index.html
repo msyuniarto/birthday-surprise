@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, Sayang!</title>
     <style>
+        /* html {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        body {
+            background-color: #ffeff4;
+            color: #333;
+            overflow: hidden;
+            touch-action: none;
+            overscroll-behavior: none;
+        } */
+
         /* Base Styles */
         * {
             margin: 0;
@@ -405,7 +418,7 @@
                 </div>
             </div>
 
-            <a href="#gallery" class="btn">Lihat Kejutanmu ❤️</a>
+            <a href="#gallery" class="btn" id="lihatKejutan">Lihat Kejutanmu ❤️</a>
         </div>
 
         <!-- Floating Hearts Background -->
@@ -420,28 +433,28 @@
         <div class="gallery-container">
             <!-- Placeholder images - ganti dengan foto Anda sendiri -->
             <div class="gallery-item">
-                <img src="images/1723512396865.jpg" alt="Kenangan 1">
-                <div class="gallery-caption">Kenangan pertama kita</div>
+                <img src="images/photo1.jpg" alt="Kenangan 1">
+                <div class="gallery-caption">Kenangan kita di Bukit Cave</div>
             </div>
             <div class="gallery-item">
-                <img src="images/1723512396865.jpg" alt="Kenangan 2">
-                <div class="gallery-caption">Liburan kita ke pantai</div>
+                <img src="images/photo2.jpg" alt="Kenangan 2">
+                <div class="gallery-caption">Kenangan kita di Bukit Cave juga</div>
             </div>
             <div class="gallery-item">
-                <img src="images/1723512396865.jpg" alt="Kenangan 3">
-                <div class="gallery-caption">Anniversary pertama kita</div>
+                <img src="images/photo3.jpg" alt="Kenangan 3">
+                <div class="gallery-caption">Kenangan kita di menara kembar, semoga kita punya keturunan kembar juga ya</div>
             </div>
             <div class="gallery-item">
-                <img src="images/1723512396865.jpg" alt="Kenangan 4">
-                <div class="gallery-caption">Saat kita makan malam romantis</div>
+                <img src="images/photo4.jpg" alt="Kenangan 4">
+                <div class="gallery-caption">Masih kinyis-kinyis ya kita</div>
             </div>
             <div class="gallery-item">
-                <img src="images/1723512396865.jpg" alt="Kenangan 5">
-                <div class="gallery-caption">Perjalanan ke gunung</div>
+                <img src="images/photo5.jpg" alt="Kenangan 5">
+                <div class="gallery-caption">Masih kinyis-kinyis ya kita</div>
             </div>
             <div class="gallery-item">
-                <img src="images/1723512396865.jpg" alt="Kenangan 6">
-                <div class="gallery-caption">Momen spesial</div>
+                <img src="images/photo6.jpg" alt="Kenangan 6">
+                <div class="gallery-caption">Jaman-jaman libur bentar, gassss</div>
             </div>
         </div>
     </section>
@@ -462,7 +475,7 @@
             
             <div class="message-card">
                 <div class="message-date">Di hari spesialmu</div>
-                <p>Di hari ulang tahunmu yang istimewa ini, aku ingin kau tahu betapa berharganya dirimu bagiku. Kau adalah hadiah terindah yang pernah kumiliki. Selamat ulang tahun, cintaku. Semoga semua impianmu menjadi kenyataan.</p>
+                <p>Di hari ulang tahunmu yang istimewa ini, aku ingin kau tahu betapa berharganya dirimu bagiku. Kau adalah hadiah terindah yang pernah kumiliki. Selamat ulang tahun, cintaku. Semoga semua impianmu menjadi kenyataan. Barakallah fii umrik ya zaujatii, Izzatun Nisa</p>
             </div>
         </div>
     </section>
@@ -479,7 +492,7 @@
         <div class="video-container">
             <!-- Video lokal dari folder video -->
             <video controls preload="metadata" poster="images/1723512396865.jpg">
-                <source src="video/VID-20240811-WA0024.mp4" type="video/mp4">
+                <source src="video/video1.mp4" type="video/mp4">
                 <!-- <source src="video/birthday-message.webm" type="video/webm"> -->
                 Maaf, browser Anda tidak mendukung tag video.
             </video>
@@ -498,7 +511,7 @@
 
     <!-- Background Music -->
     <audio id="bgMusic" loop>
-        <source src="https://example.com/your-romantic-song.mp3" type="audio/mp3">
+        <source src="music/birthday.mp3" type="audio/mp3">
     </audio>
     
     <!-- Music Control -->
@@ -507,6 +520,18 @@
     </div>
 
     <script>
+        // Untuk mencoba autoplay ketika halaman dibuka (mungkin diblokir browser)
+        const music = document.getElementById('bgMusic');
+        const musicIcon = document.querySelector('.music-control i');
+
+        document.addEventListener('click', function() {
+            if (music.paused) {
+                music.play();
+                musicIcon.classList.remove('fa-volume-mute');
+                musicIcon.classList.add('fa-volume-up');
+            }
+        }, {once: true});
+
         // Animasi Hearts Background
         function createHearts() {
             const container = document.querySelector('.hearts-container');
@@ -712,6 +737,25 @@
             
             // Listen for scroll events
             window.addEventListener('scroll', checkScroll);
+        });
+
+        // Tanggal target: 18 Mei 2025 pukul 00:00
+        const targetDate = new Date('2025-05-18T00:00:00');
+
+        document.getElementById('lihatKejutan').addEventListener('click', function (e) {
+            const now = new Date();
+
+            if (now < targetDate) {
+                e.preventDefault(); // Mencegah aksi default (misal buka modal/link)
+                alert("Sabar yaa... Kejutannya baru bisa dibuka tanggal 18 Mei 🥰");
+                location.reload(); // Ini akan refresh halaman setelah alert
+                // $("#landing").click();
+                // scrollIntoView()
+            } else {
+                // Boleh dibuka, lanjutkan aksi, misalnya tampilkan modal atau redirect
+                // Contoh jika pakai modal:
+                // document.querySelector('.modal').style.display = 'flex';
+            }
         });
     </script>
 </body>
