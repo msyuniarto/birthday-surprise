@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, Sayang!</title>
     <style>
-        html {
+        /* html {
             overflow: hidden;
             height: 100%;
         }
@@ -16,7 +16,7 @@
             overflow: hidden;
             touch-action: none;
             overscroll-behavior: none;
-        }
+        } */
 
         /* Base Styles */
         * {
@@ -569,15 +569,18 @@
             document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
             
             if (distance < 0) {
-                clearInterval(countdownInterval);
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
+                // clearInterval(countdownInterval);
+                // document.getElementById("days").innerText = "00";
+                // document.getElementById("hours").innerText = "00";
+                // document.getElementById("minutes").innerText = "00";
+                // document.getElementById("seconds").innerText = "00";
                 
-                // Tampilkan konfeti ketika hari ulang tahun tiba
-                document.getElementById("confetti").style.display = "block";
-                startConfetti();
+                // // Tampilkan konfeti ketika hari ulang tahun tiba
+                // document.getElementById("confetti").style.display = "block";
+                // startConfetti();
+                // document.getElementsByClassName("countdown").style.display = "none";
+                document.getElementsByClassName("countdown")[0].style.display = "none";
+
             }
         }
 
@@ -720,6 +723,24 @@
 
         // Initialize Everything
         document.addEventListener('DOMContentLoaded', function() {
+            // Show landing content with animation
+            setTimeout(() => {
+                document.querySelector('.landing-content').classList.remove('hidden');
+                document.querySelector('.landing-content').classList.add('fade-in');
+            }, 500);
+            
+            createHearts();
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+            setupGallery();
+            setupMusic();
+            
+            // Check scroll position on page load
+            checkScroll();
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', checkScroll);
+
             // Tanggal target: 18 Mei 2025 pukul 00:00
             const targetDate = new Date('2025-05-18T00:00:00');
             // const targetDate = new Date('2025-05-17T23:00:00');
@@ -729,11 +750,7 @@
 
                 if (now < targetDate) {
                     e.preventDefault(); // Mencegah aksi default (misal buka modal/link)
-                    e.stopPropagation();
-                    window.location.hash = '#landing';  // jika ada elemen dengan id="awal"
                     alert("Sabar yaa... Kejutannya baru bisa dibuka tanggal 18 Mei 🥰");
-                    window.location.reload();
-                    return false;
                     // location.reload(); // Ini akan refresh halaman setelah alert
                     // $("#awal").click();
                     // scrollIntoView()
@@ -757,24 +774,6 @@
                     }
                 }
             });
-
-            // Show landing content with animation
-            setTimeout(() => {
-                document.querySelector('.landing-content').classList.remove('hidden');
-                document.querySelector('.landing-content').classList.add('fade-in');
-            }, 500);
-            
-            createHearts();
-            updateCountdown();
-            const countdownInterval = setInterval(updateCountdown, 1000);
-            setupGallery();
-            setupMusic();
-            
-            // Check scroll position on page load
-            checkScroll();
-            
-            // Listen for scroll events
-            window.addEventListener('scroll', checkScroll);
         });
 
         
